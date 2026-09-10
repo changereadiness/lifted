@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Get lifted — one real, well-matched quote for the state of mind you're in.">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>lifted.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="state-view" class="view view--active" aria-labelledby="state-title">
+      <div class="brand" aria-label="Lifted">lifted.</div>
+
+      <div class="state-panel">
+        <p class="eyebrow">get lifted</p>
+        <h1 id="state-title">How are you feeling?</h1>
+
+        <div class="state-grid" role="group" aria-label="Choose how you are feeling">
+          <button class="state-button" data-state="lost">lost</button>
+          <button class="state-button" data-state="confused">confused</button>
+          <button class="state-button" data-state="afraid">afraid</button>
+          <button class="state-button" data-state="discouraged">discouraged</button>
+          <button class="state-button" data-state="stuck">stuck</button>
+          <button class="state-button" data-state="restless">restless</button>
+          <button class="state-button" data-state="overwhelmed">overwhelmed</button>
+          <button class="state-button" data-state="angry">angry</button>
+          <button class="state-button" data-state="doubtful">doubtful</button>
+          <button class="state-button" data-state="inspired">inspired</button>
+          <button class="state-button" data-state="curious">curious</button>
+          <button class="state-button" data-state="grateful">grateful</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="quote-view" class="view" aria-labelledby="quote-text" aria-hidden="true">
+      <div class="brand brand--quiet" aria-label="Lifted">lifted.</div>
+
+      <div class="quote-panel" aria-live="polite">
+        <div class="quote-context" id="quote-context"></div>
+
+        <blockquote id="quote-text"></blockquote>
+
+        <div class="attribution">
+          <div id="quote-author"></div>
+          <button id="source-toggle" class="text-button source-toggle" type="button" aria-expanded="false">
+            source
+          </button>
+          <div id="quote-source" class="source-detail" hidden></div>
+        </div>
+
+        <div class="quote-actions">
+          <button id="again-button" class="primary-action" type="button">lift me again</button>
+          <button id="change-button" class="text-button" type="button">different feeling</button>
+        </div>
+
+        <button id="why-toggle" class="why-toggle text-button" type="button" aria-expanded="false">
+          why this quote?
+        </button>
+        <p id="why-text" class="why-text" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <noscript>
+    <p class="noscript">Lifted needs JavaScript enabled to match a quote to your state of mind.</p>
+  </noscript>
+
+  <script src="quotes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
