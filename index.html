@@ -3,69 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Get lifted — one real, well-matched quote for the state of mind you're in.">
-  <meta name="theme-color" content="#f7f5ef">
-  <title>lifted.</title>
+  <meta name="description" content="Lifted — a living operating philosophy: principles, observations, sources, and ideas worth carrying forward.">
+  <meta name="theme-color" content="#F2F1ED">
+  <title>lifted. — an operating philosophy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="shell">
-    <section id="state-view" class="view view--active" aria-labelledby="state-title">
-      <div class="brand" aria-label="Lifted">lifted.</div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
-      <div class="state-panel">
-        <p class="eyebrow">get lifted</p>
-        <h1 id="state-title">How are you feeling?</h1>
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="#top" aria-label="Lifted home">lifted.</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#principles">Principles</a>
+      <a href="#observations">Observations</a>
+      <a href="#sources">Sources</a>
+      <a href="#get-lifted">Get Lifted</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span>
+    </button>
+  </header>
 
-        <div class="state-grid" role="group" aria-label="Choose how you are feeling">
-          <button class="state-button" data-state="lost">lost</button>
-          <button class="state-button" data-state="confused">confused</button>
-          <button class="state-button" data-state="afraid">afraid</button>
-          <button class="state-button" data-state="discouraged">discouraged</button>
-          <button class="state-button" data-state="stuck">stuck</button>
-          <button class="state-button" data-state="restless">restless</button>
-          <button class="state-button" data-state="overwhelmed">overwhelmed</button>
-          <button class="state-button" data-state="angry">angry</button>
-          <button class="state-button" data-state="doubtful">doubtful</button>
-          <button class="state-button" data-state="inspired">inspired</button>
-          <button class="state-button" data-state="curious">curious</button>
-          <button class="state-button" data-state="grateful">grateful</button>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href="#principles">Principles</a>
+    <a href="#observations">Observations</a>
+    <a href="#sources">Sources</a>
+    <a href="#get-lifted">Get Lifted</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-ghost" aria-hidden="true">LIFTED</div>
+      <div class="hero-grid">
+        <div class="hero-kicker reveal">
+          <span class="section-index">00</span>
+          <span>An operating philosophy</span>
+        </div>
+
+        <div class="hero-copy reveal">
+          <h1 id="hero-title">What survives<br>experience<br>becomes principle.</h1>
+          <p>A living record of ideas, observations and sources that shape judgment, agency and conduct.</p>
+        </div>
+
+        <div class="hero-axis reveal" aria-label="Core themes">
+          <span>Judgment</span>
+          <span>Agency</span>
+          <span>Conduct</span>
+          <span>Perspective</span>
+        </div>
+
+        <a class="hero-enter reveal" href="#principles">
+          <span>Enter</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="statement section-shell reveal" aria-label="Premise">
+      <p class="statement-lead">Lifted is not a doctrine.</p>
+      <p class="statement-body">It is the residue of experience: ideas tested against reality, patterns that repeat, contradictions that remain useful, and words from others worth carrying forward.</p>
+    </section>
+
+    <section class="content-section section-shell" id="principles" aria-labelledby="principles-title">
+      <div class="section-heading reveal">
+        <div class="section-heading-meta">
+          <span class="section-index">01</span>
+          <span>Principles</span>
+        </div>
+        <h2 id="principles-title">Rules worth carrying.</h2>
+        <p>Not commandments. Working principles that have earned their place through repetition, consequence or experience.</p>
+      </div>
+
+      <div class="principles-list">
+        <article class="principle reveal">
+          <div class="principle-number">P.01</div>
+          <div class="principle-body">
+            <h3>Reduce dependencies before you optimize performance.</h3>
+            <p>Anything that only works because one person, one region or one condition holds it together is borrowing stability.</p>
+          </div>
+        </article>
+        <article class="principle reveal">
+          <div class="principle-number">P.02</div>
+          <div class="principle-body">
+            <h3>Instinct can move first. Evidence must carry the claim.</h3>
+            <p>Judgment can begin before the data is complete. What follows should become increasingly testable.</p>
+          </div>
+        </article>
+        <article class="principle reveal">
+          <div class="principle-number">P.03</div>
+          <div class="principle-body">
+            <h3>Controlled exposure beats imagined certainty.</h3>
+            <p>Some knowledge only appears after contact with reality. Limit the downside, then learn from the breakage.</p>
+          </div>
+        </article>
+        <article class="principle reveal">
+          <div class="principle-number">P.04</div>
+          <div class="principle-body">
+            <h3>Strong operators can conceal weak systems.</h3>
+            <p>If exceptional people are doing the heavy lifting, measure the system again without them in the equation.</p>
+          </div>
+        </article>
+        <article class="principle reveal">
+          <div class="principle-number">P.05</div>
+          <div class="principle-body">
+            <h3>Read the room. Then test the reading.</h3>
+            <p>Human signals matter. So does knowing when intuition has become an assumption.</p>
+          </div>
+        </article>
+        <article class="principle reveal">
+          <div class="principle-number">P.06</div>
+          <div class="principle-body">
+            <h3>Do not confuse movement with elevation.</h3>
+            <p>More activity, more complexity and more ambition do not necessarily produce a higher state.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section observations-section" id="observations" aria-labelledby="observations-title">
+      <div class="section-shell">
+        <div class="section-heading section-heading--dark reveal">
+          <div class="section-heading-meta">
+            <span class="section-index">02</span>
+            <span>Observations</span>
+          </div>
+          <h2 id="observations-title">Patterns repeat before they become obvious.</h2>
+          <p>Short records of things noticed often enough to deserve attention, but not yet hardened into principle.</p>
+        </div>
+
+        <div class="observation-grid">
+          <article class="observation reveal">
+            <div class="observation-meta">Systems / Capacity</div>
+            <h3>Success can hide the true source of performance.</h3>
+            <p>A strong outcome does not prove that the underlying system is strong. Sometimes a small number of experienced people absorb the disorder and make the whole thing look ready.</p>
+          </article>
+          <article class="observation reveal">
+            <div class="observation-meta">Change / Exposure</div>
+            <h3>Readiness is rarely uniform.</h3>
+            <p>An organization may be ready in aggregate and still contain one branch, market or team where proceeding would be reckless. Local reality beats averaged confidence.</p>
+          </article>
+          <article class="observation reveal">
+            <div class="observation-meta">Judgment / Evidence</div>
+            <h3>The best evidence often arrives after the first move.</h3>
+            <p>Waiting for perfect information can eliminate the very exposure that would create useful information. The question becomes how to make the first move reversible.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="quote-view" class="view" aria-labelledby="quote-text" aria-hidden="true">
-      <div class="brand brand--quiet" aria-label="Lifted">lifted.</div>
-
-      <div class="quote-panel" aria-live="polite">
-        <div class="quote-context" id="quote-context"></div>
-
-        <blockquote id="quote-text"></blockquote>
-
-        <div class="attribution">
-          <div id="quote-author"></div>
-          <button id="source-toggle" class="text-button source-toggle" type="button" aria-expanded="false">
-            source
-          </button>
-          <div id="quote-source" class="source-detail" hidden></div>
+    <section class="content-section section-shell" id="sources" aria-labelledby="sources-title">
+      <div class="section-heading reveal">
+        <div class="section-heading-meta">
+          <span class="section-index">03</span>
+          <span>Sources</span>
         </div>
-
-        <div class="quote-actions">
-          <button id="again-button" class="primary-action" type="button">lift me again</button>
-          <button id="change-button" class="text-button" type="button">different feeling</button>
-        </div>
-
-        <button id="why-toggle" class="why-toggle text-button" type="button" aria-expanded="false">
-          why this quote?
-        </button>
-        <p id="why-text" class="why-text" hidden></p>
+        <h2 id="sources-title">No operating philosophy begins from zero.</h2>
+        <p>Words, thinkers and texts that sharpened the lens. Only traceable quotations belong here.</p>
       </div>
+
+      <div class="source-feature reveal">
+        <div class="source-mark" aria-hidden="true">“</div>
+        <blockquote id="source-feature-quote">Not till we are lost, in other words not till we have lost the world, do we begin to find ourselves.</blockquote>
+        <div class="source-feature-credit">
+          <span id="source-feature-author">Henry David Thoreau</span>
+          <span id="source-feature-work">Walden</span>
+        </div>
+        <button class="quiet-action" id="source-next" type="button">another source <span aria-hidden="true">↗</span></button>
+      </div>
+
+      <div class="source-index reveal" id="source-index" aria-label="Selected source authors"></div>
+    </section>
+
+    <section class="get-lifted" id="get-lifted" aria-labelledby="get-lifted-title">
+      <div class="get-lifted-ghost" aria-hidden="true">↑</div>
+      <div class="section-shell get-lifted-inner">
+        <div class="section-heading reveal">
+          <div class="section-heading-meta">
+            <span class="section-index">04</span>
+            <span>Get Lifted</span>
+          </div>
+          <h2 id="get-lifted-title">Where are you?</h2>
+          <p>Choose the state you are in. Lifted will return one real thought worth meeting there.</p>
+        </div>
+
+        <div class="lifted-tool reveal">
+          <div class="state-list" id="state-list" role="group" aria-label="Choose your current state">
+            <button data-state="lost">lost</button>
+            <button data-state="confused">confused</button>
+            <button data-state="afraid">afraid</button>
+            <button data-state="discouraged">discouraged</button>
+            <button data-state="stuck">stuck</button>
+            <button data-state="restless">restless</button>
+            <button data-state="overwhelmed">overwhelmed</button>
+            <button data-state="angry">angry</button>
+            <button data-state="doubtful">doubtful</button>
+            <button data-state="inspired">inspired</button>
+            <button data-state="curious">curious</button>
+            <button data-state="grateful">grateful</button>
+          </div>
+
+          <div class="lift-result" id="lift-result" aria-live="polite" hidden>
+            <div class="lift-transition" id="lift-transition"></div>
+            <blockquote id="lift-quote"></blockquote>
+            <div class="lift-credit">
+              <span id="lift-author"></span>
+              <span id="lift-source"></span>
+            </div>
+            <div class="lift-actions">
+              <button class="primary-action" id="lift-again" type="button">lift me again</button>
+              <button class="quiet-action" id="lift-reset" type="button">different state</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing section-shell reveal">
+      <div class="closing-rule"></div>
+      <p class="closing-kicker">The archive grows slowly.</p>
+      <h2>Nothing enters because it sounds good.</h2>
+      <p>It enters because it survived contact with reality—or because someone else found the words first.</p>
     </section>
   </main>
 
-  <noscript>
-    <p class="noscript">Lifted needs JavaScript enabled to match a quote to your state of mind.</p>
-  </noscript>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="wordmark wordmark--footer" href="#top">lifted.</a>
+      <p>Ideas worth carrying forward.</p>
+    </div>
+    <div class="footer-meta">
+      <span>Principles</span>
+      <span>Observations</span>
+      <span>Sources</span>
+      <span>Get Lifted</span>
+    </div>
+    <div class="footer-bottom">
+      <span>lifted.me</span>
+      <span>Judgment · Agency · Conduct</span>
+    </div>
+  </footer>
 
   <script src="quotes.js"></script>
   <script src="app.js"></script>
