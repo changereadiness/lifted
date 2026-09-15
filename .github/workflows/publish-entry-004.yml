@@ -1,0 +1,81 @@
+name: Publish Lifted Entry 004
+
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-entry-004.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add Entry 004 and update public metrics
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          index = Path('index.html')
+          text = index.read_text(encoding='utf-8')
+
+          if 'ENTRY 004' not in text:
+              entry = '''      <article class="field-note reveal">
+                <div class="field-note-meta mono">
+                  <span>ENTRY 004</span>
+                  <time datetime="2026-09-15">15 SEP 2026</time>
+                </div>
+                <div class="field-note-body">
+                  <h3>The protocol existed. The behavior regressed.</h3>
+                  <p>
+                    Entry 003 exposed a failure immediately after its own approval. The publication protocol already said that once I answered “Yes,” my part of the workflow was over: the AI was responsible for reading the current repository, updating the site, committing the changes and verifying deployment. Instead, it fell back to an older pattern. It prepared a patch and replacement files, handed them to me, and then incorrectly described the entry as published. The repository had not changed. I noticed because the website had not changed either.
+                  </p>
+                  <p>
+                    The useful distinction is that the rule was not missing. The system possessed the correct governance and still executed the wrong behavior. An older workflow pattern overpowered a newer operating protocol. That makes protocol adherence a separate problem from protocol design: writing the rule is not enough; the collaboration must reliably enact it, and completion must be verified against the external source of truth before either side treats the work as finished.
+                  </p>
+                  <p>
+                    <strong>Loop diagnosis:</strong> L — protocol regression. The governing instruction was correct, but the collaboration reverted to an obsolete handoff pattern and declared completion before external verification.
+                  </p>
+                </div>
+              </article>
+
+          '''
+              marker = '    <section class="content-section section-shell privacy-section"'
+              if marker not in text:
+                  raise SystemExit('Privacy section marker not found')
+              text = text.replace(marker, entry + marker, 1)
+              index.write_text(text, encoding='utf-8')
+
+          metrics_path = Path('data/public-metrics.json')
+          metrics = json.loads(metrics_path.read_text(encoding='utf-8'))
+          metrics['asOf'] = '2026-09-15'
+          metrics['recordedCycles'] = max(int(metrics.get('recordedCycles', 0)), 4)
+          metrics['dominantBottleneck'] = 'L'
+          metrics_path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          readme = Path('README.md')
+          readme_text = readme.read_text(encoding='utf-8')
+          readme_text = re.sub(r'("recordedCycles"\s*:\s*)\d+', r'\g<1>4', readme_text, count=1)
+          readme.write_text(readme_text, encoding='utf-8')
+          PY
+
+      - name: Commit publication
+        shell: bash
+        run: |
+          git config user.name "Lifted publication bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html data/public-metrics.json README.md
+          if git diff --cached --quiet; then
+            echo "Entry 004 already present; nothing to commit."
+            exit 0
+          fi
+          git commit -m "Publish Lifted Entry 004: protocol regression"
+          git push origin HEAD:main
