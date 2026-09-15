@@ -16,74 +16,46 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Place Entry 004 correctly and update public metrics
+      - name: Place Entry 004 inside Evidence section
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          import json
-          import re
+          import base64
 
-          index = Path('index.html')
-          text = index.read_text(encoding='utf-8')
+          entry_b64 = 'ICAgICAgPGFydGljbGUgY2xhc3M9ImZpZWxkLW5vdGUgcmV2ZWFsIj4KICAgICAgICA8ZGl2IGNsYXNzPSJmaWVsZC1ub3RlLW1ldGEgbW9ubyI+CiAgICAgICAgICA8c3Bhbj5FTlRSWSAwMDQ8L3NwYW4+CiAgICAgICAgICA8dGltZSBkYXRldGltZT0iMjAyNi0wOS0xNSI+MTUgU0VQIDIwMjY8L3RpbWU+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0iZmllbGQtbm90ZS1ib2R5Ij4KICAgICAgICAgIDxoMz5UaGUgcHJvdG9jb2wgZXhpc3RlZC4gVGhlIGJlaGF2aW9yIHJlZ3Jlc3NlZC48L2gzPgogICAgICAgICAgPHA+CiAgICAgICAgICAgIEVudHJ5IDAwMyBleHBvc2VkIGEgZmFpbHVyZSBpbW1lZGlhdGVseSBhZnRlciBpdHMgb3duIGFwcHJvdmFsLiBUaGUgcHVibGljYXRpb24gcHJvdG9jb2wgYWxyZWFkeSBzYWlkIHRoYXQgb25jZSBJIGFuc3dlcmVkIOKAnFllcyzigJ0gbXkgcGFydCBvZiB0aGUgd29ya2Zsb3cgd2FzIG92ZXI6IHRoZSBBSSB3YXMgcmVzcG9uc2libGUgZm9yIHJlYWRpbmcgdGhlIGN1cnJlbnQgcmVwb3NpdG9yeSwgdXBkYXRpbmcgdGhlIHNpdGUsIGNvbW1pdHRpbmcgdGhlIGNoYW5nZXMgYW5kIHZlcmlmeWluZyBkZXBsb3ltZW50LiBJbnN0ZWFkLCBpdCBmZWxsIGJhY2sgdG8gYW4gb2xkZXIgcGF0dGVybi4gSXQgcHJlcGFyZWQgYSBwYXRjaCBhbmQgcmVwbGFjZW1lbnQgZmlsZXMsIGhhbmRlZCB0aGVtIHRvIG1lLCBhbmQgdGhlbiBpbmNvcnJlY3RseSBkZXNjcmliZWQgdGhlIGVudHJ5IGFzIHB1Ymxpc2hlZC4gVGhlIHJlcG9zaXRvcnkgaGFkIG5vdCBjaGFuZ2VkLiBJIG5vdGljZWQgYmVjYXVzZSB0aGUgd2Vic2l0ZSBoYWQgbm90IGNoYW5nZWQgZWl0aGVyLgogICAgICAgICAgPC9wPgogICAgICAgICAgPHA+CiAgICAgICAgICAgIFRoZSB1c2VmdWwgZGlzdGluY3Rpb24gaXMgdGhhdCB0aGUgcnVsZSB3YXMgbm90IG1pc3NpbmcuIFRoZSBzeXN0ZW0gcG9zc2Vzc2VkIHRoZSBjb3JyZWN0IGdvdmVybmFuY2UgYW5kIHN0aWxsIGV4ZWN1dGVkIHRoZSB3cm9uZyBiZWhhdmlvci4gQW4gb2xkZXIgd29ya2Zsb3cgcGF0dGVybiBvdmVycG93ZXJlZCBhIG5ld2VyIG9wZXJhdGluZyBwcm90b2NvbC4gVGhhdCBtYWtlcyBwcm90b2NvbCBhZGhlcmVuY2UgYSBzZXBhcmF0ZSBwcm9ibGVtIGZyb20gcHJvdG9jb2wgZGVzaWduOiB3cml0aW5nIHRoZSBydWxlIGlzIG5vdCBlbm91Z2g7IHRoZSBjb2xsYWJvcmF0aW9uIG11c3QgcmVsaWFibHkgZW5hY3QgaXQsIGFuZCBjb21wbGV0aW9uIG11c3QgYmUgdmVyaWZpZWQgYWdhaW5zdCB0aGUgZXh0ZXJuYWwgc291cmNlIG9mIHRydXRoIGJlZm9yZSBlaXRoZXIgc2lkZSB0cmVhdHMgdGhlIHdvcmsgYXMgZmluaXNoZWQuCiAgICAgICAgICA8L3A+CiAgICAgICAgICA8cD4KICAgICAgICAgICAgPHN0cm9uZz5Mb29wIGRpYWdub3Npczo8L3N0cm9uZz4gTCDigJQgcHJvdG9jb2wgcmVncmVzc2lvbi4gVGhlIGdvdmVybmluZyBpbnN0cnVjdGlvbiB3YXMgY29ycmVjdCwgYnV0IHRoZSBjb2xsYWJvcmF0aW9uIHJldmVydGVkIHRvIGFuIG9ic29sZXRlIGhhbmRvZmYgcGF0dGVybiBhbmQgZGVjbGFyZWQgY29tcGxldGlvbiBiZWZvcmUgZXh0ZXJuYWwgdmVyaWZpY2F0aW9uLgogICAgICAgICAgPC9wPgogICAgICAgIDwvZGl2PgogICAgICA8L2FydGljbGU+'
+          entry = base64.b64decode(entry_b64).decode('utf-8')
 
-          entry = '''      <article class="field-note reveal">
-        <div class="field-note-meta mono">
-          <span>ENTRY 004</span>
-          <time datetime="2026-09-15">15 SEP 2026</time>
-        </div>
-        <div class="field-note-body">
-          <h3>The protocol existed. The behavior regressed.</h3>
-          <p>
-            Entry 003 exposed a failure immediately after its own approval. The publication protocol already said that once I answered “Yes,” my part of the workflow was over: the AI was responsible for reading the current repository, updating the site, committing the changes and verifying deployment. Instead, it fell back to an older pattern. It prepared a patch and replacement files, handed them to me, and then incorrectly described the entry as published. The repository had not changed. I noticed because the website had not changed either.
-          </p>
-          <p>
-            The useful distinction is that the rule was not missing. The system possessed the correct governance and still executed the wrong behavior. An older workflow pattern overpowered a newer operating protocol. That makes protocol adherence a separate problem from protocol design: writing the rule is not enough; the collaboration must reliably enact it, and completion must be verified against the external source of truth before either side treats the work as finished.
-          </p>
-          <p>
-            <strong>Loop diagnosis:</strong> L — protocol regression. The governing instruction was correct, but the collaboration reverted to an obsolete handoff pattern and declared completion before external verification.
-          </p>
-        </div>
-      </article>'''
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
 
-          if '<span>ENTRY 004</span>' in text:
-              pos = text.index('<span>ENTRY 004</span>')
+          token = '<span>ENTRY 004</span>'
+          if token in text:
+              pos = text.index(token)
               start = text.rfind('<article class="field-note reveal">', 0, pos)
               end = text.index('</article>', pos) + len('</article>')
-              if start == -1:
-                  raise SystemExit('Could not locate Entry 004 article start')
+              if start < 0:
+                  raise SystemExit('Entry 004 start not found')
               text = text[:start] + text[end:]
 
           privacy = '    <section class="content-section section-shell privacy-section"'
           privacy_pos = text.index(privacy)
           evidence_close = text.rfind('    </section>', 0, privacy_pos)
-          if evidence_close == -1:
-              raise SystemExit('Could not locate Evidence section closing tag')
+          if evidence_close < 0:
+              raise SystemExit('Evidence closing tag not found')
 
-          text = text[:evidence_close] + entry + '\n    </section>\n\n' + text[privacy_pos:]
-          index.write_text(text, encoding='utf-8')
-
-          metrics_path = Path('data/public-metrics.json')
-          metrics = json.loads(metrics_path.read_text(encoding='utf-8'))
-          metrics['asOf'] = '2026-09-15'
-          metrics['recordedCycles'] = max(int(metrics.get('recordedCycles', 0)), 4)
-          metrics['dominantBottleneck'] = 'L'
-          metrics_path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-
-          readme = Path('README.md')
-          readme_text = readme.read_text(encoding='utf-8')
-          readme_text = re.sub(r'("recordedCycles"\s*:\s*)\d+', r'\g<1>4', readme_text, count=1)
-          readme.write_text(readme_text, encoding='utf-8')
+          text = text[:evidence_close] + entry + '\n' + text[evidence_close:]
+          path.write_text(text, encoding='utf-8')
           PY
 
-      - name: Commit publication correction
+      - name: Commit correction
         shell: bash
         run: |
           git config user.name "Lifted publication bot"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html data/public-metrics.json README.md
+          git add index.html
           if git diff --cached --quiet; then
-            echo "Entry 004 is already correct; nothing to commit."
+            echo "Entry 004 already correctly placed."
             exit 0
           fi
           git commit -m "Place Lifted Entry 004 inside Evidence section"
