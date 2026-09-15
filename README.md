@@ -32,9 +32,9 @@ For GitHub Pages, place these files at the repository root and publish from the 
 
 ```json
 {
-  "asOf": "2026-09-14",
-  "recordedCycles": 0,
-  "dominantBottleneck": "—",
+  "asOf": "2026-09-15",
+  "recordedCycles": 2,
+  "dominantBottleneck": "L",
   "newCapabilities": 0
 }
 ```
