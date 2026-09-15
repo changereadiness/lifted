@@ -1,6 +1,6 @@
 {
   "asOf": "2026-09-15",
-  "recordedCycles": 7,
-  "dominantBottleneck": "L",
+  "recordedCycles": 8,
+  "dominantBottleneck": "A / L",
   "newCapabilities": 0
 }
